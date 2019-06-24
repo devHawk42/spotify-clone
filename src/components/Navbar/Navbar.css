@@ -3,17 +3,22 @@
     background-color: rgba(0,0,0,.9);
     overflow-y: auto;
     width: 230px;
-    will-change: transform;
+    /* will-change: transform; */
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     flex-direction: column;
     min-height: 0;
+    height: auto;
 }
 
 /* nav ul - Start */
-.navBar-group {
+.recently-played {
+    flex: 1;
+}
 
+.navBar-group {
+    color: #B3B3B9;
 }
 
 .navBar-item {
@@ -41,6 +46,15 @@
     margin-right: 0;
 }
 
+.navBar-link-text {
+    margin-left: 16px;
+}
+
+.navBar-icon-text-wrapper {
+    display: flex;
+    align-items: center;
+}
+
 .navBar-link--active, .navBar-link--active:focus, .navBar-link--active:hover {
     color : #fff;
 }
@@ -61,9 +75,69 @@
 }
 /* nav ul - End */
 
-
-.nav-header h1 {
+.nav-header {
     padding-left: 24px;
     padding-bottom: 18px;
+}
+
+.nav-header h1 {
+    /* TEMPORAL */
     color: white;
+}
+
+.navBar-group-header {
+    padding-top: 24px;
+    padding-bottom: 7px;
+    padding-left: 24px;
+    padding-right: 0;
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: .015em;
+    font-weight: var(--glue-font-weight-normal);
+    color: #b3b3b3;
+    text-transform: uppercase;
+    letter-spacing: .16em;
+    color: #fff;
+    opacity: .6;
+}
+
+.navBar-text-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-right: 1px;
+    margin-right: -1px;
+}
+
+.navBar-text-description {
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: .015em;
+    font-weight: var(--glue-font-weight-normal);
+    color: #b3b3b3;
+    text-transform: uppercase;
+    letter-spacing: .16em;
+    color: #fff;
+    opacity: .6;
+    padding-top: 1px;
+    display: block;
+}
+
+.navBar-link-header {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: unset;
+}
+
+.navBar-item-small {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: .015em;
+    font-weight: var(--glue-font-weight-normal);
+}
+
+/* FOOTER START */
+.nav-footer {
+    color: #fff;
+    padding: 8px 8px 8px 0px;
 }
