@@ -7,7 +7,21 @@ class Footer extends Component {
     render() {
         return (
             <div className="now-playing">
-                
+                <div className="now-playing-container">
+                    <div className="now-playing-left">
+                        <div className="cover-art"></div>
+                        <div className="track-info">
+                            <span>Maps of Non-Existence</span>
+                            <span>Thank you scientist</span>
+                        </div>
+                    </div>
+                    <div className="now-playing-center">
+
+                    </div>
+                    <div className="now-playing-right">
+
+                    </div>
+                </div>
             </div>
         );
     }

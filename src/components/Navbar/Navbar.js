@@ -59,7 +59,7 @@ class Navbar extends Component {
                             <div className="active-left-icon">
                                 <a className="navBar-link">
                                     <div className="navBar-text-title">Maps of Non-Existence places</div>
-                                    <span className="navBar-text-description">Your library</span>
+                                    <span className="navBar-text-description">Album</span>
                                 </a>
                             </div>
                         </li>
@@ -67,7 +67,7 @@ class Navbar extends Component {
                             <div className="active-left-icon">
                                 <a className="navBar-link">
                                     <div className="navBar-text-title">Maps of Non-Existence places</div>
-                                    <span className="navBar-text-description">Your library</span>
+                                    <span className="navBar-text-description">Artist</span>
                                 </a>
                             </div>
                         </li>
@@ -75,7 +75,7 @@ class Navbar extends Component {
                             <div className="active-left-icon">
                                 <a className="navBar-link">
                                     <div className="navBar-text-title">Maps of Non-Existence places</div>
-                                    <span className="navBar-text-description">Your library</span>
+                                    <span className="navBar-text-description">Show</span>
                                 </a>
                             </div>
                         </li>
