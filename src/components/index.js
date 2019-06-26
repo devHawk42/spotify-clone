@@ -1,9 +1,9 @@
-import Footer from './Footer/Footer.js';
-import Home from './Home/Home.js';
-import Navbar from './Navbar/Navbar.js';
+import Footer from './Footer/Footer.jsx';
+import Home from './Home/Home.jsx';
+import Navbar from './Navbar/Navbar.jsx';
 
 export {
-    Footer,
-    Home,
-    Navbar
-}
+  Footer,
+  Home,
+  Navbar,
+};
