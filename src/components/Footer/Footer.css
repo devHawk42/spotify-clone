@@ -30,7 +30,8 @@
 .cover-art {
     width: 56px;
     height: 56px;
-    background: url('https://www.gannett-cdn.com/-mm-/6a3775b6a948128b130aa22a381f6e16e64a4d0c/c=20-0-780-760/local/-/media/Louisville/NG/2013/12/04/pinkfloyd.jpg?width=60&height=60&fit=crop')
+    background: url('https://www.gannett-cdn.com/-mm-/6a3775b6a948128b130aa22a381f6e16e64a4d0c/c=20-0-780-760/local/-/media/Louisville/NG/2013/12/04/pinkfloyd.jpg?width=60&height=60&fit=crop');
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75);
 }
 
 .track-info {
@@ -86,10 +87,10 @@
 .player-control-buttons {
     display: flex;
     -webkit-box-direction: normal;
-    margin-bottom: 12px;
+    padding: 8px;
     /* width: 224px; */
     -webkit-box-pack: justify;
-    justify-content: space-evenly;
+    justify-content: center;
     -webkit-box-orient: horizontal;
     flex-flow: row nowrap;
 }
@@ -102,6 +103,23 @@
     min-width: 32px;
     height: 32px;
     position: relative;
+}
+
+.btn-backward, .btn-forward {
+    width: 18px;
+    display: block;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.btn-play {
+    width: 32px;
+    min-height: 32px;
+
 }
 
 .playback-bar {
@@ -180,4 +198,13 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+}
+
+.volume-container {
+    width: 20%;
+    margin: 8px;
+}
+
+.audio-icon {
+    width: 16px;
 }
