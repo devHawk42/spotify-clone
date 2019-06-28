@@ -23,4 +23,5 @@ li, ul, h2{
     padding: 0;
     border: 0;
     vertical-align: baseline;
+    list-style: none;
 }

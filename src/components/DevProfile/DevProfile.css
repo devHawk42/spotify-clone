@@ -1,0 +1,36 @@
+.profile-container {
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-structure {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 45%;
+    align-items: center;
+    min-width: 300px;
+}
+
+.profile-pic-wrapper {
+    width: 100px;
+    height: 100px;
+    background-image: url('/public/profile-pic.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.profile-links-wrapper {
+    width: 80%;
+}
+
+.profile-link {
+    margin: 8px;
+    border: 1px solid white;
+    border-radius: 20px;
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+}

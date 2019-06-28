@@ -1,5 +1,6 @@
 import './Navbar.css';
 import React from 'react';
+import { Link } from "react-router-dom";
 
 const Navbar = () => (
   <div className="nav-bar">
@@ -81,7 +82,9 @@ const Navbar = () => (
         <a className="navBar-link">
           <div className="navBar-icon-text-wrapper">
             <object id="svgObject" data="./public/github-filled.svg" type="image/svg+xml">Your browser doesn't support SVG</object>
-            <span className="navBar-link-text">Dev Profile</span>
+            <Link to='/devprofile' className="navBar-link-text">
+              Dev Profile
+            </Link>
           </div>
         </a>
       </div>
