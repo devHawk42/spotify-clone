@@ -19,7 +19,7 @@
 
 .now-playing-left {
     width: 30%;
-    min-width: 180px;
+    /* min-width: 180px; */
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -100,7 +100,7 @@
     border: none;
     color: #b3b3b3;
     width: 32px;
-    min-width: 32px;
+    /* min-width: 32px; */
     height: 32px;
     position: relative;
 }
@@ -143,7 +143,7 @@
     font-size: 11px;
     line-height: 16px;
     letter-spacing: .015em;
-    min-width: 40px;
+    /* min-width: 40px; */
     text-align: center;
 }
 
@@ -194,7 +194,7 @@
 /* PLAYING RIGHT START */
 .now-playing-right {
     width: 30%;
-    min-width: 180px;
+    /* min-width: 180px; */
     display: flex;
     justify-content: flex-end;
     align-items: center;
