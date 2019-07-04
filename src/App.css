@@ -27,6 +27,10 @@ li, ul, h2{
     list-style: none;
 }
 
+textarea:focus, input:focus{
+    outline: none;
+}
+
 
 @media only screen and (max-width: 599px){ 
     .container {

@@ -1,6 +1,6 @@
 import './Navbar.css';
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const Navbar = () => (
   <div className="nav-bar">
@@ -11,22 +11,22 @@ const Navbar = () => (
     <ul>
       <li className="navBar-group">
         <div className="navBar-item active-left-icon">
-          <a className="navBar-link navBar-link--active">
+          <Link to="/" className="navBar-link navBar-link--active">
             <div className="navBar-icon-text-wrapper">
-              <object id="svgObject" data="./public/home.svg" type="image/svg+xml">Your browser doesn't support SVG</object>
+              <object id="svgObject" data="./public/home.svg" type="image/svg+xml">Your browser doesn&apost support SVG</object>
               <span className="navBar-link-text">Home</span>
             </div>
-          </a>
+          </Link>
         </div>
       </li>
       <li className="navBar-group">
         <div className="navBar-item active-left-icon">
-          <a className="navBar-link">
+          <Link to="/search" className="navBar-link">
             <div className="navBar-icon-text-wrapper">
-              <object id="svgObject" data="./public/search.svg" type="image/svg+xml">Your browser doesn't support SVG</object>
+              <object id="svgObject" data="./public/search.svg" type="image/svg+xml">Your browser doesn&apostt support SVG</object>
               <span className="navBar-link-text">Search</span>
             </div>
-          </a>
+          </Link>
         </div>
       </li>
       <li className="navBar-group">
@@ -82,7 +82,7 @@ const Navbar = () => (
         <a className="navBar-link">
           <div className="navBar-icon-text-wrapper">
             <object id="svgObject" data="./public/github-filled.svg" type="image/svg+xml">Your browser doesn't support SVG</object>
-            <Link to='/devprofile' className="navBar-link-text">
+            <Link to="/devprofile" className="navBar-link-text">
               Dev Profile
             </Link>
           </div>
