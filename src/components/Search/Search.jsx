@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import './Search.css';
+import { Link } from 'react-router-dom';
 
 class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
       value: '',
+      artists: [],
+      albums: [],
+      playlists: [],
+      podcasts: [],
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -27,7 +32,12 @@ class Search extends Component {
     fetch(request)
       .then(res => res.json())
       .then((res) => {
-        console.log(res);
+        this.setState({
+          artists: res.artists.items,
+          albums: res.albums.items,
+          playlists: res.playlists.items,
+          podcasts: res.episodes.items,
+        });
       })
       .catch((err) => {
         console.log(err);
@@ -35,6 +45,12 @@ class Search extends Component {
   }
 
   render() {
+    console.log(this.state.artists);
+    const a = (this.state.artists[0]) ? this.state.artists : [];
+
+    /* for (let i = 0; i < a.length; i++) {
+      console.log(a[i].images);
+    } */
     return (
       <div className="search-main">
         <div>
@@ -75,38 +91,36 @@ class Search extends Component {
             <h1 className="artists-title"><a href="#search" className="artist-link">Artists</a></h1>
           </div>
           <div className="artists-wrapper">
-            <div className="single-artist">
-              <div className="artist-image"></div>
-              <div className="artist-more-info">Metalocalypse: Dethklok</div>
-            </div>
-            <div className="single-artist">
-              <div className="artist-image"></div>
-              <div className="artist-more-info">Metalocalypse: Dethklok</div>
-            </div>
-            <div className="single-artist">
-              <div className="artist-image"></div>
-              <div className="artist-more-info">Metalocalypse: Dethklok</div>
-            </div>
-            <div className="single-artist">
-              <div className="artist-image"></div>
-              <div className="artist-more-info">Metalocalypse: Dethklok</div>
-            </div>
-            <div className="single-artist">
-              <div className="artist-image"></div>
-              <div className="artist-more-info">Metalocalypse: Dethklok</div>
-            </div>
-            <div className="single-artist">
-              <div className="artist-image"></div>
-              <div className="artist-more-info">Metalocalypse: Dethklok</div>
-            </div>
-            <div className="single-artist">
-              <div className="artist-image"></div>
-              <div className="artist-more-info">Metalocalypse: Dethklok</div>
-            </div>
-            <div className="single-artist">
-              <div className="artist-image"></div>
-              <div className="artist-more-info">Metalocalypse: Dethklok</div>
-            </div>
+            {a.map(artist => (
+              <div className="single-artist">
+                <Link to={`/artist/${artist.id}`}>
+                  <div
+                    className="artist-image border-radius"
+                    style={(artist.images[1]) ? { backgroundImage: `url(${artist.images[1].url})` } : { backgroundImage: 'url(https://i.scdn.co/image/2162dbfb7151c96801bf586475cb203c40a21910)' }}
+                  />
+                </Link>
+                <div className="artist-more-info">{artist.name}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="artists-container">
+          <div className="artists-header">
+            <h1 className="artists-title"><a href="#search" className="artist-link">Albums</a></h1>
+          </div>
+          <div className="artists-wrapper">
+            {this.state.albums.map(artist => (
+              <div className="single-artist">
+                <Link to={`/artist/${artist.id}`}>
+                  <div
+                    className="artist-image"
+                    style={(artist.images[1]) ? { backgroundImage: `url(${artist.images[1].url})` } : { backgroundImage: 'url(https://i.scdn.co/image/2162dbfb7151c96801bf586475cb203c40a21910)' }}
+                  />
+                </Link>
+                <div className="artist-more-info">{artist.name}</div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

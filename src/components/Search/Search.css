@@ -13,6 +13,7 @@
   letter-spacing: -.005em;
   color: #fff;
   caret-color: #1db954;
+  box-sizing: border-box;
 }
 
 .search-submit {
@@ -95,30 +96,33 @@
 
 .single-artist {
   max-width: 300px;
-  padding: 12px;
+  padding: 10px 8px 24px 8px;;
 }
 
 .artist-image {
-  border-radius: 50%;
   background-image: url('https://i.scdn.co/image/2162dbfb7151c96801bf586475cb203c40a21910');
   background-size: cover; 
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
 }
 
 .artist-more-info {
   color: #fff;
   text-align: center;
+  width: 150px;
 }
 
+.border-radius {
+  border-radius: 50%;
+}
 
-@media (max-width: 680px) {
+@media (max-width: 350px) {
   .artist-image {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
   }
 
   .artist-more-info {
-    width: 150px;
+    width: 120px;
   }
 }
