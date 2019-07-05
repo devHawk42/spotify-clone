@@ -70,6 +70,45 @@ class Search extends Component {
             </li>
           </ul>
         </nav>
+        <div className="artists-container">
+          <div className="artists-header">
+            <h1 className="artists-title"><a href="#search" className="artist-link">Artists</a></h1>
+          </div>
+          <div className="artists-wrapper">
+            <div className="single-artist">
+              <div className="artist-image"></div>
+              <div className="artist-more-info">Metalocalypse: Dethklok</div>
+            </div>
+            <div className="single-artist">
+              <div className="artist-image"></div>
+              <div className="artist-more-info">Metalocalypse: Dethklok</div>
+            </div>
+            <div className="single-artist">
+              <div className="artist-image"></div>
+              <div className="artist-more-info">Metalocalypse: Dethklok</div>
+            </div>
+            <div className="single-artist">
+              <div className="artist-image"></div>
+              <div className="artist-more-info">Metalocalypse: Dethklok</div>
+            </div>
+            <div className="single-artist">
+              <div className="artist-image"></div>
+              <div className="artist-more-info">Metalocalypse: Dethklok</div>
+            </div>
+            <div className="single-artist">
+              <div className="artist-image"></div>
+              <div className="artist-more-info">Metalocalypse: Dethklok</div>
+            </div>
+            <div className="single-artist">
+              <div className="artist-image"></div>
+              <div className="artist-more-info">Metalocalypse: Dethklok</div>
+            </div>
+            <div className="single-artist">
+              <div className="artist-image"></div>
+              <div className="artist-more-info">Metalocalypse: Dethklok</div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

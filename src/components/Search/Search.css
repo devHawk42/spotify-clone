@@ -1,5 +1,6 @@
 .search-main {
   background:black;
+  overflow: auto;
 }
 
 .search-input {
@@ -61,4 +62,63 @@
   left: 50%;
   bottom: 0;
   margin-left: -15px;
+}
+
+/* Artists */
+
+.artist-container {
+}
+
+.artists-title {
+  font-size: 36px;
+  line-height: 44px;
+  letter-spacing: -.005em;
+  font-weight: var(--glue-font-weight-black);
+  color: #fff;
+  text-transform: none;
+  margin: 24px 0;
+  padding-left: 20px;
+}
+
+.artist-link {
+  color: #fff;
+}
+
+.artists-wrapper {
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  flex-flow: row wrap;
+  -webkit-box-pack: start;
+  justify-content: center;
+}
+
+.single-artist {
+  max-width: 300px;
+  padding: 12px;
+}
+
+.artist-image {
+  border-radius: 50%;
+  background-image: url('https://i.scdn.co/image/2162dbfb7151c96801bf586475cb203c40a21910');
+  background-size: cover; 
+  width: 200px;
+  height: 200px;
+}
+
+.artist-more-info {
+  color: #fff;
+  text-align: center;
+}
+
+
+@media (max-width: 680px) {
+  .artist-image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .artist-more-info {
+    width: 150px;
+  }
 }
