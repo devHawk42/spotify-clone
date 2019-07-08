@@ -3,6 +3,7 @@ import Home from './Home/Home.jsx';
 import Navbar from './Navbar/Navbar.jsx';
 import DevProfile from './DevProfile/DevProfile.jsx';
 import Search from './Search/Search.jsx';
+import Cards from './Cards/Cards.jsx';
 
 export {
   Footer,
@@ -10,4 +11,5 @@ export {
   Navbar,
   DevProfile,
   Search,
+  Cards,
 };
