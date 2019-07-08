@@ -7,13 +7,13 @@ class Search extends Component {
     super(props);
     this.state = {
       value: '',
-      topResult: [],
+      topResults: [],
       artists: [],
+      songs: [],
       albums: [],
       playlists: [],
-      podcasts: [],
-      songs: [],
       episodes: [],
+      podcasts: [],
       selectedCategorie: '',
     };
 
@@ -24,10 +24,14 @@ class Search extends Component {
 
   componentDidMount() {
     document.addEventListener('click', this.handleEvent);
-console.log("component did mount")
+
     if (localStorage.getItem('lastSearch')) {
       this.setState(JSON.parse(localStorage.getItem('lastSearch')));
     }
+  }
+
+  componentWillUnmount() {
+    localStorage.setItem('lastSearch', JSON.stringify(this.state));
   }
 
   handleEvent(event) {
@@ -54,19 +58,15 @@ console.log("component did mount")
       .then(res => res.json())
       .then((res) => {
         if (!res.error) {
-          const searchResponse = {
+          this.setState({
+            topResults: res.best_match.items,
             artists: res.artists.items,
+            songs: res.tracks.items,
             albums: res.albums.items,
             playlists: res.playlists.items,
-            podcasts: res.shows.items,
-            songs: res.tracks.items,
             episodes: res.episodes.items,
-            bestMatch: res.best_match.items,
-          };
-          this.setState(searchResponse);
-          
-          searchResponse.value = this.state.value;
-          localStorage.setItem('lastSearch', JSON.stringify(searchResponse));
+            podcasts: res.shows.items,
+          });
         }
       })
       .catch((err) => {

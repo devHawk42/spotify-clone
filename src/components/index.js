@@ -5,6 +5,7 @@ import DevProfile from './DevProfile/DevProfile.jsx';
 import Search from './Search/Search.jsx';
 import Cards from './Cards/Cards.jsx';
 import Categories from './Categories/Categories.jsx';
+import SingleArtist from './SingleArtist/SingleArtist.jsx';
 
 export {
   Footer,
@@ -14,4 +15,5 @@ export {
   Search,
   Cards,
   Categories,
+  SingleArtist,
 };

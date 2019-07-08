@@ -1,0 +1,36 @@
+.single-artist {
+  max-width: 300px;
+  padding: 10px 8px 24px 8px;;
+}
+
+.artist-image {
+  background-image: url('https://i.scdn.co/image/2162dbfb7151c96801bf586475cb203c40a21910');
+  background-size: cover; 
+  width: 150px;
+  height: 150px;
+}
+
+.artist-more-info {
+  color: #fff;
+  text-align: center;
+  width: 150px;
+}
+
+.border-radius {
+  border-radius: 50%;
+}
+
+.hide {
+  display:none;
+}
+
+@media (max-width: 350px) {
+  .artist-image {
+    width: 120px;
+    height: 120px;
+  }
+
+  .artist-more-info {
+    width: 120px;
+  }
+}
