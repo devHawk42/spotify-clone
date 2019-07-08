@@ -4,6 +4,7 @@ import Navbar from './Navbar/Navbar.jsx';
 import DevProfile from './DevProfile/DevProfile.jsx';
 import Search from './Search/Search.jsx';
 import Cards from './Cards/Cards.jsx';
+import Categories from './Categories/Categories.jsx';
 
 export {
   Footer,
@@ -12,4 +13,5 @@ export {
   DevProfile,
   Search,
   Cards,
+  Categories,
 };

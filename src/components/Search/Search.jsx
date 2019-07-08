@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { Cards } from '../index';
+import { Cards, Categories } from '../index';
 import './Search.css';
 
 class Search extends Component {
@@ -8,14 +7,31 @@ class Search extends Component {
     super(props);
     this.state = {
       value: '',
+      topResult: [],
       artists: [],
       albums: [],
       playlists: [],
       podcasts: [],
+      songs: [],
+      episodes: [],
+      selectedCategorie: '',
     };
 
+    this.handleEvent = this.handleEvent.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    document.addEventListener('click', this.handleEvent);
+  }
+
+  handleEvent(event) {
+    if (event.target.className === 'search-single-item') {
+      this.setState({
+        selectedCategorie: event.target.innerHTML,
+      });
+    }
   }
 
   handleChange(event) {
@@ -38,7 +54,10 @@ class Search extends Component {
             artists: res.artists.items,
             albums: res.albums.items,
             playlists: res.playlists.items,
-            podcasts: res.episodes.items,
+            podcasts: res.shows.items,
+            songs: res.tracks.items,
+            episodes: res.episodes.items,
+            bestMatch: res.best_match.items,
           });
         }
       })
@@ -48,6 +67,14 @@ class Search extends Component {
   }
 
   render() {
+    const categoriesList = [];
+    Object.keys(this.state).forEach((key) => {
+      const element = this.state[key];
+      if (Array.isArray(element) && element.length) {
+        categoriesList.push(key);
+      }
+    });
+
     return (
       <div className="search-main">
         <div>
@@ -56,35 +83,34 @@ class Search extends Component {
             <input className="search-submit" type="submit" value="Submit" />
           </form>
         </div>
-        <nav className="search-categories">
-          <ul className="search-categories-wrapper">
-            <li className="search-categories-items">
-              <div><a href="#search" className="search-single-item search-item-active">top results</a></div>
-            </li>
-            <li className="search-categories-items">
-              <div><a href="#search" className="search-single-item">artists</a></div>
-            </li>
-            <li className="search-categories-items">
-              <div><a href="#search" className="search-single-item">songs</a></div>
-            </li>
-            <li className="search-categories-items">
-              <div><a href="#search" className="search-single-item">albums</a></div>
-            </li>
-            <li className="search-categories-items">
-              <div><a href="#search" className="search-single-item">playlists</a></div>
-            </li>
-            <li className="search-categories-items">
-              <div><a href="#search" className="search-single-item">episodes</a></div>
-            </li>
-            <li className="search-categories-items">
-              <div><a href="#search" className="search-single-item">podcasts</a></div>
-            </li>
-          </ul>
-        </nav>
 
-        <Cards title="Artists" data={this.state.artists} />
+        <Categories selected={this.state.selectedCategorie} categories={categoriesList} />
 
-        <Cards title="Albums" data={this.state.albums} />
+        <Cards
+          title="artists"
+          data={this.state.artists}
+          selected={this.state.selectedCategorie}
+        />
+
+        <Cards
+          title="albums"
+          data={this.state.albums}
+          selected={this.state.selectedCategorie}
+        />
+
+        <Cards
+          title="playlists"
+          data={this.state.playlists}
+          selected={this.state.selectedCategorie}
+        />
+
+        <Cards
+          title="podcasts"
+          data={this.state.podcasts}
+          selected={this.state.selectedCategorie}
+        />
+
+        {/* <Cards title="Episodes" data={this.state.episodes} /> */}
 
       </div>
     );

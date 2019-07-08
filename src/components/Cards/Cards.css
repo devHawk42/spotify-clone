@@ -48,6 +48,10 @@
   border-radius: 50%;
 }
 
+.hide {
+  display:none;
+}
+
 @media (max-width: 350px) {
   .artist-image {
     width: 120px;
