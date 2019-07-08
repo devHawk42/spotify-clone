@@ -24,6 +24,10 @@ class Search extends Component {
 
   componentDidMount() {
     document.addEventListener('click', this.handleEvent);
+console.log("component did mount")
+    if (localStorage.getItem('lastSearch')) {
+      this.setState(JSON.parse(localStorage.getItem('lastSearch')));
+    }
   }
 
   handleEvent(event) {
@@ -50,7 +54,7 @@ class Search extends Component {
       .then(res => res.json())
       .then((res) => {
         if (!res.error) {
-          this.setState({
+          const searchResponse = {
             artists: res.artists.items,
             albums: res.albums.items,
             playlists: res.playlists.items,
@@ -58,7 +62,11 @@ class Search extends Component {
             songs: res.tracks.items,
             episodes: res.episodes.items,
             bestMatch: res.best_match.items,
-          });
+          };
+          this.setState(searchResponse);
+          
+          searchResponse.value = this.state.value;
+          localStorage.setItem('lastSearch', JSON.stringify(searchResponse));
         }
       })
       .catch((err) => {
