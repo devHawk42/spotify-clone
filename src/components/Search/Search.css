@@ -19,3 +19,7 @@
 .search-submit {
   display: none;
 }
+
+.content-spacing {
+  padding: 0px 32px;
+}

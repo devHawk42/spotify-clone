@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Cards, Categories } from '../index';
+import { Cards, Categories, TopResults } from '../index';
 import './Search.css';
 
 class Search extends Component {
@@ -36,8 +36,10 @@ class Search extends Component {
 
   handleEvent(event) {
     if (event.target.className === 'search-single-item') {
+      let target = event.target.innerHTML;
+      target = (target === 'topResults') ? '' : target;
       this.setState({
-        selectedCategorie: event.target.innerHTML,
+        selectedCategorie: target,
       });
     }
   }
@@ -91,34 +93,37 @@ class Search extends Component {
             <input className="search-submit" type="submit" value="Submit" />
           </form>
         </div>
+        <div className="content-spacing">
+          <Categories selected={this.state.selectedCategorie} categories={categoriesList} />
 
-        <Categories selected={this.state.selectedCategorie} categories={categoriesList} />
+          <TopResults artist={this.state.artists[0]} />
 
-        <Cards
-          title="artists"
-          data={this.state.artists}
-          selected={this.state.selectedCategorie}
-        />
+          <Cards
+            title="artists"
+            data={this.state.artists}
+            selected={this.state.selectedCategorie}
+          />
 
-        <Cards
-          title="albums"
-          data={this.state.albums}
-          selected={this.state.selectedCategorie}
-        />
+          <Cards
+            title="albums"
+            data={this.state.albums}
+            selected={this.state.selectedCategorie}
+          />
 
-        <Cards
-          title="playlists"
-          data={this.state.playlists}
-          selected={this.state.selectedCategorie}
-        />
+          <Cards
+            title="playlists"
+            data={this.state.playlists}
+            selected={this.state.selectedCategorie}
+          />
 
-        <Cards
-          title="podcasts"
-          data={this.state.podcasts}
-          selected={this.state.selectedCategorie}
-        />
+          <Cards
+            title="podcasts"
+            data={this.state.podcasts}
+            selected={this.state.selectedCategorie}
+          />
 
-        {/* <Cards title="Episodes" data={this.state.episodes} /> */}
+          {/* <Cards title="Episodes" data={this.state.episodes} /> */}
+        </div>
 
       </div>
     );

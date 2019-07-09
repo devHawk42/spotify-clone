@@ -6,6 +6,7 @@ import Search from './Search/Search.jsx';
 import Cards from './Cards/Cards.jsx';
 import Categories from './Categories/Categories.jsx';
 import SingleArtist from './SingleArtist/SingleArtist.jsx';
+import TopResults from './Search/TopResults.jsx';
 
 export {
   Footer,
@@ -16,4 +17,5 @@ export {
   Cards,
   Categories,
   SingleArtist,
+  TopResults,
 };

@@ -13,7 +13,9 @@ const SingleArtist = ({
         style={(url) ? { backgroundImage: `url(${url})` } : { backgroundImage: 'url(https://i.scdn.co/image/2162dbfb7151c96801bf586475cb203c40a21910)' }}
       />
     </Link>
-    <div className="artist-more-info">{name}</div>
+    <div className="artist-more-info">
+      <Link to={`/artist/${id}`}>{name}</Link>
+    </div>
   </div>
 );
 

@@ -17,9 +17,10 @@
 
 a {
     text-decoration: none;
+    color: #fff;
 }
 
-li, ul, h2{
+li, ul, h2, ol{
     margin: 0;
     padding: 0;
     border: 0;

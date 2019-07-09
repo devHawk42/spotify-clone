@@ -12,8 +12,17 @@
 
 .artist-more-info {
   color: #fff;
-  text-align: center;
-  width: 150px;
+    text-align: center;
+    width: 150px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 5px;
+    letter-spacing: .015em;
+    font-weight: var(--glue-font-weight-bold);
 }
 
 .border-radius {
