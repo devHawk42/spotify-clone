@@ -9,11 +9,17 @@
 }
 
 .track-description {
-  width: 100%;
+  width: 85%;
+  margin-left: 6px;
 }
 
 .track-name {
   margin-top: .75em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 1px;
+  margin-right: -1px;
 }
 
 .tracklist-info {
@@ -24,8 +30,6 @@
 }
 
 .track-icon-container {
-  width: 42px;
-  height: auto;
 }
 
 .track-icon {
@@ -40,4 +44,29 @@
   font-size: 14px;
   opacity: .7;
   margin-top: .96em;
+}
+
+.track-artist {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 1px;
+  margin-right: -1px;
+}
+
+.track-album {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 1px;
+  margin-right: -1px;
+}
+
+.track-info-separator {
+  color: #fff;
+  opacity: .6;
+  display: inline-block;
+  transform: translateY(-1px);
+  font-size: .8em;
+  padding: 0 8px;
 }

@@ -21,11 +21,11 @@ const ListedItems = ({ songs }) => (
             <div className="track-description">
               <div className="track-name">{song.name}</div>
               <div className="tracklist-info">
-                <Link to={`/artist/${song.artists[0].id}`}>
+                <Link to={`/artist/${song.artists[0].id}`} className="track-artist">
                   <span>{song.artists[0].name}</span>
                 </Link>
-                <span>•</span>
-                <Link to={`/album/${song.album.name}`}>
+                <span className="track-info-separator">•</span>
+                <Link to={`/album/${song.album.name}`} className="track-album">
                   <span>{song.album.name}</span>
                 </Link>
               </div>
