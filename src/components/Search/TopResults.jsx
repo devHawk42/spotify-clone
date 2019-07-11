@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { SingleArtist } from '../index';
+import { SingleArtist, ListedItems } from '../index';
 import './TopResults.css';
 
-const TopResults = ({ artist }) => (
+const TopResults = ({ artist, songs }) => (
   <div className="top-results-container">
     <div className="top-results-img-container">
       <SingleArtist
@@ -13,64 +13,14 @@ const TopResults = ({ artist }) => (
         type={artist.type}
       />
     </div>
-    <div className="top-results-list-container">
-      <ol className="tracklist">
-        <li className="tracklist-item">
-          <div className="track-icon-container">
-            <div className="track-icon" />
-          </div>
-          <div className="track-description">
-            <div className="track-name">Windowpane</div>
-            <div className="tracklist-info">
-              <span>Opeth</span>
-              <span>•</span>
-              <span>Damnation</span>
-            </div>
-          </div>
-          <div className="track-duration">
-            <span>7:40</span>
-          </div>
-        </li>
-        <li className="tracklist-item">
-          <div className="track-icon-container">
-            <div className="track-icon" />
-          </div>
-          <div className="track-description">
-            <div className="track-name">Windowpane</div>
-            <div className="tracklist-info">
-              <span>Opeth</span>
-              <span>•</span>
-              <span>Damnation</span>
-            </div>
-          </div>
-          <div className="track-duration">
-            <span>7:40</span>
-          </div>
-        </li>
-        <li className="tracklist-item">
-          <div className="track-icon-container">
-            <div className="track-icon" />
-          </div>
-          <div className="track-description">
-            <div className="track-name">Windowpane</div>
-            <div className="tracklist-info">
-              <span>Opeth</span>
-              <span>•</span>
-              <span>Damnation</span>
-            </div>
-          </div>
-          <div className="track-duration">
-            <span>7:40</span>
-          </div>
-        </li>
-      </ol>
-    </div>
+    <ListedItems songs={songs} />
 
   </div>
 );
 
 TopResults.defaultProps = {
   artist: {},
+  songs: [],
 };
 
 TopResults.propTypes = {
@@ -84,6 +34,12 @@ TopResults.propTypes = {
           url: PropTypes.string,
         }),
       ),
+    }),
+  ),
+  songs: PropTypes.objectOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      duration_ms: PropTypes.number,
     }),
   ),
 };

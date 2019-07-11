@@ -87,7 +87,7 @@ class Search extends Component {
 
     return (
       <div className="search-main">
-        <div>
+        <div className="search-bar">
           <form onSubmit={this.handleSubmit}>
             <input className="search-input" type="text" placeholder="Start typing..." value={this.state.value} onChange={this.handleChange} />
             <input className="search-submit" type="submit" value="Submit" />
@@ -96,7 +96,7 @@ class Search extends Component {
         <div className="content-spacing">
           <Categories selected={this.state.selectedCategorie} categories={categoriesList} />
 
-          <TopResults artist={this.state.artists[0]} />
+          <TopResults artist={this.state.artists[0]} songs={this.state.songs.splice(0, 5)} />
 
           <Cards
             title="artists"

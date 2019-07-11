@@ -7,6 +7,7 @@ import Cards from './Cards/Cards.jsx';
 import Categories from './Categories/Categories.jsx';
 import SingleArtist from './SingleArtist/SingleArtist.jsx';
 import TopResults from './Search/TopResults.jsx';
+import ListedItems from './ListedItems/ListedItems.jsx';
 
 export {
   Footer,
@@ -18,4 +19,5 @@ export {
   Categories,
   SingleArtist,
   TopResults,
+  ListedItems,
 };
