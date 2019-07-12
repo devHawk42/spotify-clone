@@ -40,4 +40,17 @@ const ListedItems = ({ songs }) => (
   </div>
 );
 
+ListedItems.defaultProps = {
+  songs: [],
+};
+
+ListedItems.propTypes = {
+  songs: PropTypes.objectOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      duration_ms: PropTypes.number,
+    }),
+  ),
+};
+
 export default ListedItems;

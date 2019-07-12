@@ -29,9 +29,6 @@
   font-size: 14px;
 }
 
-.track-icon-container {
-}
-
 .track-icon {
   background-image: url('/public/song.png');
   margin-top: 0.96em;
