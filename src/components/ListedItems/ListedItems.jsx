@@ -45,7 +45,7 @@ ListedItems.defaultProps = {
 };
 
 ListedItems.propTypes = {
-  songs: PropTypes.objectOf(
+  songs: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
       duration_ms: PropTypes.number,

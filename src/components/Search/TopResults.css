@@ -1,3 +1,7 @@
 .top-results-container {
   display: flex;
 }
+
+.hide {
+  display: none;
+}

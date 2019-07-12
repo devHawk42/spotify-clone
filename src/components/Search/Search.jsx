@@ -85,6 +85,8 @@ class Search extends Component {
       }
     });
 
+    const topSongs = this.state.songs.slice(0, 5);
+console.log(this.state.selectedCategorie)
     return (
       <div className="search-main">
         <div className="search-bar">
@@ -96,7 +98,11 @@ class Search extends Component {
         <div className="content-spacing">
           <Categories selected={this.state.selectedCategorie} categories={categoriesList} />
 
-          <TopResults artist={this.state.artists[0]} songs={this.state.songs.splice(0, 5)} />
+          <TopResults
+            artist={this.state.artists[0]}
+            songs={topSongs}
+            selected={this.state.selectedCategorie}
+          />
 
           <Cards
             title="artists"
