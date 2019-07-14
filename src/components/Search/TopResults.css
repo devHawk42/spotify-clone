@@ -5,3 +5,9 @@
 .hide {
   display: none;
 }
+
+@media only screen and (max-width: 599px) {
+  .top-results-img-container {
+    display: none;
+  }
+}

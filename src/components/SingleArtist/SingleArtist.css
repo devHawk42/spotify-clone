@@ -33,7 +33,7 @@
   display:none;
 }
 
-@media (max-width: 350px) {
+@media (max-width: 380px) {
   .artist-image {
     width: 120px;
     height: 120px;

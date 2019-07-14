@@ -29,3 +29,9 @@
 .content-spacing {
   padding: 90px 32px 0px 32px;
 }
+
+@media only screen and (max-width: 599px) {
+  .content-spacing {
+    padding: 90px 15px 0px 15px;
+  }
+}
