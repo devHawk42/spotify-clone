@@ -8,6 +8,7 @@ import Categories from './Categories/Categories.jsx';
 import SingleArtist from './SingleArtist/SingleArtist.jsx';
 import TopResults from './Search/TopResults.jsx';
 import ListedItems from './ListedItems/ListedItems.jsx';
+import Episodes from './Search/Episodes.jsx';
 
 export {
   Footer,
@@ -20,4 +21,5 @@ export {
   SingleArtist,
   TopResults,
   ListedItems,
+  Episodes,
 };

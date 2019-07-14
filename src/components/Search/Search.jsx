@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Cards, Categories, TopResults } from '../index';
+import {
+  Cards, Categories, TopResults, ListedItems, Episodes
+} from '../index';
 import './Search.css';
 
 class Search extends Component {
@@ -86,7 +88,8 @@ class Search extends Component {
     });
 
     const topSongs = this.state.songs.slice(0, 5);
-
+    const topEpisodes = this.state.episodes.slice(0, 5);
+console.log(topEpisodes)
     return (
       <div className="search-main">
         <div className="search-bar">
@@ -128,9 +131,18 @@ class Search extends Component {
             selected={this.state.selectedCategorie}
           />
 
-          {/* <Cards title="Episodes" data={this.state.episodes} /> */}
-        </div>
+          {
+            (this.state.selectedCategorie === 'songs')
+              ? <ListedItems items={this.state.songs} />
+              : ''
+          }
 
+          <Episodes
+            title="episodes"
+            episodes={topEpisodes}
+            selected={this.state.selectedCategorie}
+          />
+        </div>
       </div>
     );
   }

@@ -9,29 +9,39 @@ function msToTime(ms) {
   return `${minutes}:${(seconds < 10 ? '0' : '')}${seconds}`;
 }
 
-const ListedItems = ({ songs }) => (
+const ListedItems = ({ items }) => (
   <div className="top-results-list-container">
     <ol className="tracklist">
       {
-        songs.map(song => (
+        items.map(item => (
           <li className="tracklist-item">
             <div className="track-icon-container">
               <div className="track-icon" />
             </div>
             <div className="track-description">
-              <div className="track-name">{song.name}</div>
-              <div className="tracklist-info">
-                <Link to={`/artist/${song.artists[0].id}`} className="track-artist">
-                  <span>{song.artists[0].name}</span>
-                </Link>
-                <span className="track-info-separator">•</span>
-                <Link to={`/album/${song.album.name}`} className="track-album">
-                  <span>{song.album.name}</span>
-                </Link>
-              </div>
+              <div className="track-name">{item.name}</div>
+              {(item.type !== 'episode')
+                ? (
+                  <div className="tracklist-info">
+                    <Link to={`/artist/${item.artists[0].id}`} className="track-artist">
+                      <span>{item.artists[0].name}</span>
+                    </Link>
+                    <span className="track-info-separator">•</span>
+                    <Link to={`/album/${item.album.name}`} className="track-album">
+                      <span>{item.album.name}</span>
+                    </Link>
+                  </div>
+                )
+                : (
+                  <div className="tracklist-info">
+                    {(!item.explicit) ? '' : <span>Explicit</span>}
+                    <span>{item.release_date}</span>
+                  </div>
+                )
+              }
             </div>
             <div className="track-duration">
-              <span>{msToTime(song.duration_ms)}</span>
+              <span>{msToTime(item.duration_ms)}</span>
             </div>
           </li>
         ))
@@ -41,11 +51,11 @@ const ListedItems = ({ songs }) => (
 );
 
 ListedItems.defaultProps = {
-  songs: [],
+  items: [],
 };
 
 ListedItems.propTypes = {
-  songs: PropTypes.arrayOf(
+  items: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
       duration_ms: PropTypes.number,

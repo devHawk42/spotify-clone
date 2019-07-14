@@ -15,7 +15,7 @@ const TopResults = ({ artist, songs, selected }) => (
         type={artist.type}
       />
     </div>
-    <ListedItems songs={songs} />
+    <ListedItems items={songs} />
   </div>
 );
 
