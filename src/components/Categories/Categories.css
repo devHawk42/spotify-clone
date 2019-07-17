@@ -23,6 +23,7 @@
   margin: 10px;
   padding: 5px 10px;
   text-decoration: none;
+  cursor: pointer;
   /* -webkit-transition: opacity .2s linear;
   transition: opacity .2s linear; */
 }

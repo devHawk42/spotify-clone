@@ -89,7 +89,7 @@ class Search extends Component {
 
     const topSongs = this.state.songs.slice(0, 5);
     const topEpisodes = this.state.episodes.slice(0, 5);
-console.log(topEpisodes)
+
     return (
       <div className="search-main">
         <div className="search-bar">

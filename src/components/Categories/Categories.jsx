@@ -9,12 +9,12 @@ const Categories = ({ selected, categories }) => (
         categories.map(categorie => (
           <li className="search-categories-items">
             <div>
-              <a
-                href="#search"
+              <span
+                href=""
                 className={(selected === categorie) ? 'search-single-item search-item-active' : 'search-single-item'}
               >
                 {categorie}
-              </a>
+              </span>
             </div>
           </li>
         ))

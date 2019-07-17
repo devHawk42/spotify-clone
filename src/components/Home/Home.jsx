@@ -1,26 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Categories } from '../index';
+import { endpoints, makeRequest } from '../../utils/requests';
 import './Home.css';
 
-function Home() {
-  /* function getArtist() {
-    const request = new Request('https://api.spotify.com/v1/me/albums', {
-      headers: new Headers({
-        'Authorization': 'Bearer ' + this.props.token
-      })
-    });
+class Home extends Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
 
-    fetch(request).then(res => {
-      return res.json();
-      }).then(res => {
-        console.log(res)
-      }).catch(err => {
-        console.log(err)
-      });
-  } */
+  async componentDidMount() {
+    this.setState(await makeRequest(endpoints.recentlyPlayed));
+  }
 
-  return (
-    <div className="main-view" />
-  );
+  render() {
+    const categories = ['featured', 'podcasts', 'charts', 'genres & moods', 'new releases', 'discover'];
+    //console.log(this.state);
+    return (
+      <div className="main-view">
+        <Categories categories={categories} />
+      </div>
+    );
+  }
 }
 
 
