@@ -15,7 +15,7 @@ class Home extends Component {
 
   render() {
     const categories = ['featured', 'podcasts', 'charts', 'genres & moods', 'new releases', 'discover'];
-    //console.log(this.state);
+    console.log(this.state);
     return (
       <div className="main-view">
         <Categories categories={categories} />

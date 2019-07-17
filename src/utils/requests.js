@@ -1,3 +1,5 @@
+import { refreshToken } from './session';
+
 const url = 'https://api.spotify.com/v1/';
 
 const endpoints = {
@@ -15,18 +17,13 @@ function makeRequest(endpoint) {
   return fetch(request)
     .then(res => res.json())
     .then((res) => {
-      console.log(res)
-      if (res.error.status === 401) {
-        // refresh token
-        console.log('refresh token');
+      if (res.error && res.error.status === 401) {
+        refreshToken();
       }
       return res;
     })
     .catch((err) => {
-      if (err.error.status == 401) {
-        // refresh token
-        console.log('refresh token');
-      }
+      console.log(err);
     });
 }
 
