@@ -7,34 +7,40 @@ class Home extends Component {
   constructor() {
     super();
     this.state = {
+      userProfile: {},
+      newReleases: [],
       recentlyPlayed: [],
       categories: [],
-      selected: '',
+      selectedCategorie: '',
     };
   }
 
   async componentDidMount() {
-    const result = await makeRequest(endpoints.categories);
-    //console.log(result)
+    const userProfile = await makeRequest(endpoints.userProfile);
+    const newReleases = await makeRequest(endpoints.newReleases(userProfile.country));
+    const recentlyPlayed = await makeRequest(endpoints.recentlyPlayed);
+
     this.setState({
-      recentlyPlayed: result,
+      userProfile,
+      newReleases: newReleases.albums,
+      recentlyPlayed,
     });
   }
 
   handleClick(section) {
-    this.setState({ selected: section });
+    this.setState({ selectedCategorie: section });
   }
 
   render() {
     const categories = ['featured', 'podcasts', 'charts', 'genres & moods', 'new releases', 'discover'];
-    console.log(this.state.selected);
+    console.log(this.state);
 
     return (
       <div className="main-view">
         <Categories
           categories={categories}
           onClick={e => this.handleClick(e)}
-          selected={this.state.selected}
+          selected={this.state.selectedCategorie}
         />
 
         {/* <Cards

@@ -23,5 +23,5 @@ export {
   TopResults,
   ListedItems,
   Episodes,
-  CategorieIcon
+  CategorieIcon,
 };
