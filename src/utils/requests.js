@@ -8,7 +8,6 @@ const endpoints = {
 };
 
 function makeRequest(endpoint) {
-  console.log(endpoint)
   const request = new Request(`${url + endpoint}`,
     {
       headers: new Headers({

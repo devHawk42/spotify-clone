@@ -14,7 +14,7 @@ const ListedItems = ({ items }) => (
     <ol className="tracklist">
       {
         items.map(item => (
-          <li className="tracklist-item">
+          <li key={item.id} className="tracklist-item">
             <div className="track-icon-container">
               <div className="track-icon" />
             </div>

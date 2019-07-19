@@ -6,8 +6,9 @@ const Categories = ({ selected, categories }) => (
   <nav style={(!categories.length) ? { display: 'none' } : {}} className="search-categories">
     <ul className="search-categories-wrapper">
       {
-        categories.map(categorie => (
-          <li className="search-categories-items">
+        categories.map((categorie, index) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <li key={index} className="search-categories-items">
             <div>
               <span
                 href=""

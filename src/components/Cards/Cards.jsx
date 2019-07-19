@@ -11,6 +11,7 @@ const Cards = ({ title, data, selected }) => (
     <div className="artists-wrapper">
       {data.map(artist => (
         <SingleArtist
+          key={artist.id}
           id={artist.id}
           name={artist.name}
           url={(artist.images[0]) ? artist.images[0].url : 'https://i.scdn.co/image/2162dbfb7151c96801bf586475cb203c40a21910)'}
