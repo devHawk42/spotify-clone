@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { SingleArtist } from '../index';
-import './Cards.css';
+import './CategorieIcon.css';
 
-const Cards = ({ title, data, selected }) => (
-  <div className={(!data.length || (selected !== title && selected !== '')) ? 'hide artists-container' : 'artists-container'}>
+const CategorieIcon = ({ data }) => (
+  <div className="artists-container">
     <div className="artists-header">
-      <h1 className="artists-title"><a href="#search" className="artist-link">{title}</a></h1>
+      <h1 className="artists-title"><a href="#search" className="artist-link">{data.name}</a></h1>
     </div>
     <div className="artists-wrapper">
       {data.map(artist => (
@@ -22,14 +22,11 @@ const Cards = ({ title, data, selected }) => (
   </div>
 );
 
-Cards.defaultProps = {
-  title: '',
+CategorieIcon.defaultProps = {
   data: [],
-  selected: '',
 };
 
-Cards.propTypes = {
-  title: PropTypes.string,
+CategorieIcon.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string,
@@ -42,8 +39,7 @@ Cards.propTypes = {
       ),
     }),
   ),
-  selected: PropTypes.string,
 };
 
 
-export default Cards;
+export default CategorieIcon;

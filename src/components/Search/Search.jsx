@@ -86,7 +86,10 @@ class Search extends Component {
           </form>
         </div>
         <div className="content-spacing">
-          <Categories selected={this.state.selectedCategorie} categories={categoriesList} />
+          <Categories
+            selected={this.state.selectedCategorie}
+            categories={categoriesList}
+          />
 
           <TopResults
             artist={this.state.artists[0]}
