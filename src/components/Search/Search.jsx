@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   Cards, Categories, TopResults, ListedItems, Episodes
 } from '../index';
+import { makeRequest, endpoints } from '../../utils/requests';
 import './Search.css';
 
 class Search extends Component {
@@ -50,32 +51,18 @@ class Search extends Component {
     this.setState({ value: event.target.value });
   }
 
-  handleSubmit(event) {
+  async handleSubmit(event) {
     event.preventDefault();
-    const request = new Request(`https://api.spotify.com/v1/search?type=album%2Cartist%2Cplaylist%2Ctrack%2Cshow_audio%2Cepisode_audio&q=${this.state.value}&decorate_restrictions=true&best_match=true&include_external=audio&limit=10&userless=false&market=from_token`,
-      {
-        headers: new Headers({
-          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-        }),
-      });
-    fetch(request)
-      .then(res => res.json())
-      .then((res) => {
-        if (!res.error) {
-          this.setState({
-            topResults: res.best_match.items,
-            artists: res.artists.items,
-            songs: res.tracks.items,
-            albums: res.albums.items,
-            playlists: res.playlists.items,
-            episodes: res.episodes.items,
-            podcasts: res.shows.items,
-          });
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    const searchResult = await makeRequest(endpoints.search(this.state.value));
+    this.setState({
+      topResults: searchResult.best_match.items,
+      artists: searchResult.artists.items,
+      songs: searchResult.tracks.items,
+      albums: searchResult.albums.items,
+      playlists: searchResult.playlists.items,
+      episodes: searchResult.episodes.items,
+      podcasts: searchResult.shows.items,
+    });
   }
 
   render() {
