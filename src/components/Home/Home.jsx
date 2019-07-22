@@ -43,11 +43,13 @@ class Home extends Component {
           selected={this.state.selectedCategorie}
         />
 
-        {/* <Cards
-          title="Recently played"
-          data={this.state.recentlyPlayed}
-          selected={this.state.selectedCategorie}
-        /> */}
+        {(this.state.selectedCategorie === 'new releases') ? (
+          <Cards
+            title="New albums & singles"
+            data={this.state.newReleases.items}
+            selected={this.state.selectedCategorie}
+          />
+        ) : ''}
 
       </div>
     );

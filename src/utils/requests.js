@@ -7,7 +7,7 @@ const endpoints = {
   recentlyPlayed: '/me/player/recently-played',
   search: query => `/search?type=album%2Cartist%2Cplaylist%2Ctrack%2Cshow_audio%2Cepisode_audio&q=${query}&decorate_restrictions=true&best_match=true&include_external=audio&limit=10&userless=false&market=from_token`,
   categories: '/browse/categories',
-  newReleases: country => `/browse/new-releases?country=${country}`,
+  newReleases: country => `/browse/new-releases?country=${country}&limit=10`,
 };
 
 function makeRequest(endpoint) {

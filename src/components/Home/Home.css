@@ -1,4 +1,5 @@
 .main-view {
+    overflow: auto;
     grid-area: main-view;
     width: 100%;
     display: -webkit-box;

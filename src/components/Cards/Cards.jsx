@@ -1,26 +1,47 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { SingleArtist } from '../index';
 import './Cards.css';
 
-const Cards = ({ title, data, selected }) => (
-  <div className={(!data.length || (selected !== title && selected !== '')) ? 'hide artists-container' : 'artists-container'}>
-    <div className="artists-header">
-      <h1 className="artists-title"><a href="#search" className="artist-link">{title}</a></h1>
-    </div>
-    <div className="artists-wrapper">
-      {data.map(artist => (
-        <SingleArtist
-          key={artist.id}
-          id={artist.id}
-          name={artist.name}
-          url={(artist.images && artist.images[0]) ? artist.images[0].url : 'https://i.scdn.co/image/2162dbfb7151c96801bf586475cb203c40a21910)'}
-          type={artist.type}
-        />
-      ))}
-    </div>
-  </div>
-);
+class Cards extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+
+  render() {
+    const { title, data, selected } = this.props;
+
+    function artistInfo(artists) {
+      const artistCollab = [];
+      for (let i = 0; i < artists.length; i++) {
+        artistCollab.push(artists[i].name);
+      }
+      return artistCollab.join(', ');
+    }
+
+    return (
+      <div className={(!data.length || (selected !== title && selected !== '')) ? 'artists-container' : 'artists-container'}>
+        <div className="artists-header">
+          <h1 className="artists-title"><a href="#search" className="artist-link">{title}</a></h1>
+        </div>
+        <div className="artists-wrapper">
+          {data.map(artist => (
+            <SingleArtist
+              key={artist.id}
+              id={artist.id}
+              name={artist.name}
+              artistInfo={artistInfo(artist.artists)}
+              url={(artist.images && artist.images[0]) ? artist.images[0].url : 'https://i.scdn.co/image/2162dbfb7151c96801bf586475cb203c40a21910)'}
+              type={artist.type}
+            />
+          ))}
+        </div>
+      </div>
+    );
+  }
+}
 
 Cards.defaultProps = {
   title: '',
