@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './SingleArtist.css';
 
 const SingleArtist = ({
-  id, type, url, name, artistInfo
+  id, type, url, name, artistInfo,
 }) => (
   <div key={id} className="single-artist">
     <Link to={`/artist/${id}`}>
@@ -25,6 +25,7 @@ SingleArtist.defaultProps = {
   type: '',
   url: '',
   name: '',
+  artistInfo: '',
 };
 
 SingleArtist.propTypes = {
@@ -32,6 +33,7 @@ SingleArtist.propTypes = {
   type: PropTypes.string,
   url: PropTypes.string,
   name: PropTypes.string,
+  artistInfo: PropTypes.string,
 };
 
 export default SingleArtist;

@@ -15,6 +15,7 @@ class Cards extends Component {
 
     function artistInfo(artists) {
       const artistCollab = [];
+      // eslint-disable-next-line no-plusplus
       for (let i = 0; i < artists.length; i++) {
         artistCollab.push(artists[i].name);
       }

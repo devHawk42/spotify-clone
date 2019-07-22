@@ -9,7 +9,7 @@ import SingleArtist from './SingleArtist/SingleArtist.jsx';
 import TopResults from './Search/TopResults.jsx';
 import ListedItems from './ListedItems/ListedItems.jsx';
 import Episodes from './Search/Episodes.jsx';
-import CategorieIcon from './Home/CategorieIcon.jsx';
+import Genres from './Home/Genres.jsx';
 
 export {
   Footer,
@@ -23,5 +23,5 @@ export {
   TopResults,
   ListedItems,
   Episodes,
-  CategorieIcon,
+  Genres,
 };

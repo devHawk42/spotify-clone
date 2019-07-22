@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Categories, Cards } from '../index';
+import { Categories, Cards, Genres } from '../index';
 import { endpoints, makeRequest } from '../../utils/requests';
 import './Home.css';
 
@@ -10,7 +10,7 @@ class Home extends Component {
       userProfile: {},
       newReleases: [],
       recentlyPlayed: [],
-      categories: [],
+      categories: {},
       selectedCategorie: '',
     };
   }
@@ -19,11 +19,13 @@ class Home extends Component {
     const userProfile = await makeRequest(endpoints.userProfile);
     const newReleases = await makeRequest(endpoints.newReleases(userProfile.country));
     const recentlyPlayed = await makeRequest(endpoints.recentlyPlayed);
+    const categories = await makeRequest(endpoints.categories);
 
     this.setState({
       userProfile,
       newReleases: newReleases.albums,
       recentlyPlayed,
+      categories: categories.categories,
     });
   }
 
@@ -32,22 +34,31 @@ class Home extends Component {
   }
 
   render() {
-    const categories = ['featured', 'podcasts', 'charts', 'genres & moods', 'new releases', 'discover'];
-    console.log(this.state);
-
+    const tabCategories = ['featured', 'podcasts', 'charts', 'genres & moods', 'new releases', 'discover'];
+    const { selectedCategorie, newReleases, categories } = this.state;
+console.log(this.state)
     return (
       <div className="main-view">
         <Categories
-          categories={categories}
+          categories={tabCategories}
           onClick={e => this.handleClick(e)}
-          selected={this.state.selectedCategorie}
+          selected={selectedCategorie}
         />
 
-        {(this.state.selectedCategorie === 'new releases') ? (
+        {(selectedCategorie === 'genres & moods') ? (
+          <Genres
+            title="genres & moods"
+            data={categories.items}
+            selected={selectedCategorie}
+          />
+        ) : ''}
+
+
+        {(selectedCategorie === 'new releases') ? (
           <Cards
             title="New albums & singles"
-            data={this.state.newReleases.items}
-            selected={this.state.selectedCategorie}
+            data={newReleases.items}
+            selected={selectedCategorie}
           />
         ) : ''}
 
