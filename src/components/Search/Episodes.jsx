@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { ListedItems } from '../index';
 import './Episodes.css';
 
-const Episodes = ({ title, episodes, selected }) => (
-  <div className={(!episodes.length || (selected !== title && selected !== '')) ? 'hide artists-container' : 'artists-container'}>
+const Episodes = ({ title, episodes }) => (
+  <div className="artists-container" >
     <div className="artists-header">
       <h1 className="artists-title"><a href="#search" className="artist-link">{title}</a></h1>
     </div>
@@ -15,7 +15,6 @@ const Episodes = ({ title, episodes, selected }) => (
 Episodes.defaultProps = {
   title: '',
   episodes: [],
-  selected: '',
 };
 
 Episodes.propTypes = {
@@ -32,7 +31,6 @@ Episodes.propTypes = {
       ),
     }),
   ),
-  selected: PropTypes.string,
 };
 
 

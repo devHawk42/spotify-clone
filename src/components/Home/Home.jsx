@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Categories, Cards, Genres, RecentlyPlayed } from '../index';
+import { Categories, Cards, Genres } from '../index';
 import { endpoints, makeRequest } from '../../utils/requests';
 import './Home.css';
 
@@ -48,7 +48,7 @@ class Home extends Component {
       categories,
       recentlyPlayed,
     } = this.state;
-    console.log(recentlyPlayed);
+
     return (
       <div className="main-view">
         <Categories

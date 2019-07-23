@@ -3,10 +3,8 @@ import PropTypes from 'prop-types';
 import { SingleArtist, ListedItems } from '../index';
 import './TopResults.css';
 
-const TopResults = ({ artist, songs, selected }) => (
-  <div
-    className={(!songs.length || (selected !== '')) ? 'hide' : 'top-results-container'}
-  >
+const TopResults = ({ artist, songs }) => (
+  <div className="top-results-container">
     <div className="top-results-img-container">
       <SingleArtist
         id={artist.id}
@@ -22,7 +20,6 @@ const TopResults = ({ artist, songs, selected }) => (
 TopResults.defaultProps = {
   artist: {},
   songs: [],
-  selected: '',
 };
 
 TopResults.propTypes = {
@@ -44,7 +41,6 @@ TopResults.propTypes = {
       duration_ms: PropTypes.number,
     }),
   ),
-  selected: PropTypes.string,
 };
 
 export default TopResults;

@@ -25,7 +25,7 @@ class Cards extends Component {
     }
 
     function imageURL(artist) {
-      const imgDefault = 'https://i.scdn.co/image/2162dbfb7151c96801bf586475cb203c40a21910)';
+      const imgDefault = 'https://i.scdn.co/image/2162dbfb7151c96801bf586475cb203c40a21910';
       if (type === 'recentlyPlayed') {
         return (artist.album.images && artist.album.images[0]) ? artist.album.images[0].url : imgDefault;
       }

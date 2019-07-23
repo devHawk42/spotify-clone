@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Cards, Categories, TopResults, ListedItems, Episodes
+  Cards, Categories, TopResults, ListedItems, Episodes,
 } from '../index';
 import { makeRequest, endpoints } from '../../utils/requests';
 import './Search.css';
@@ -20,9 +20,7 @@ class Search extends Component {
       selectedCategorie: '',
     };
 
-    this.handleEvent = this.handleEvent.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -37,14 +35,8 @@ class Search extends Component {
     localStorage.setItem('lastSearch', JSON.stringify(this.state));
   }
 
-  handleEvent(event) {
-    if (event.target.className === 'search-single-item') {
-      let target = event.target.innerHTML;
-      target = (target === 'topResults') ? '' : target;
-      this.setState({
-        selectedCategorie: target,
-      });
-    }
+  handleClick(section) {
+    this.setState({ selectedCategorie: section });
   }
 
   handleChange(event) {
@@ -53,7 +45,8 @@ class Search extends Component {
 
   async handleSubmit(event) {
     event.preventDefault();
-    const searchResult = await makeRequest(endpoints.search(this.state.value));
+    const { value } = this.state;
+    const searchResult = await makeRequest(endpoints.search(value));
     this.setState({
       topResults: searchResult.best_match.items,
       artists: searchResult.artists.items,
@@ -66,72 +59,83 @@ class Search extends Component {
   }
 
   render() {
-    const categoriesList = [];
-    Object.keys(this.state).forEach((key) => {
-      const element = this.state[key];
-      if (Array.isArray(element) && element.length) {
-        categoriesList.push(key);
-      }
-    });
+    const {
+      selectedCategorie, songs, episodes, value,
+      artists, playlists, podcasts, albums,
+    } = this.state;
 
-    const topSongs = this.state.songs.slice(0, 5);
-    const topEpisodes = this.state.episodes.slice(0, 5);
+    const tabCategories = ['top results', 'artists', 'songs', 'albums', 'playlists', 'episodes', 'podcasts'];
+
+    const topSongs = songs.slice(0, 5);
+    const topEpisodes = episodes.slice(0, 5);
 
     return (
       <div className="search-main">
         <div className="search-bar">
           <form onSubmit={this.handleSubmit}>
-            <input className="search-input" type="text" placeholder="Start typing..." value={this.state.value} onChange={this.handleChange} />
+            <input className="search-input" type="text" placeholder="Start typing..." value={value} onChange={this.handleChange} />
             <input className="search-submit" type="submit" value="Submit" />
           </form>
         </div>
         <div className="content-spacing">
           <Categories
-            selected={this.state.selectedCategorie}
-            categories={categoriesList}
+            selected={selectedCategorie}
+            onClick={e => this.handleClick(e)}
+            categories={tabCategories}
           />
 
-          <TopResults
-            artist={this.state.artists[0]}
-            songs={topSongs}
-            selected={this.state.selectedCategorie}
-          />
+          {(selectedCategorie === 'top results') ? (
+            <TopResults
+              artist={artists[0]}
+              songs={topSongs}
+            />
+          ) : ''}
 
-          <Cards
-            title="artists"
-            data={this.state.artists}
-            selected={this.state.selectedCategorie}
-          />
+          {(selectedCategorie === 'artists' || selectedCategorie === 'top results') ? (
+            <Cards
+              title="artists"
+              data={artists}
+              selected={selectedCategorie}
+            />
+          ) : ''}
 
-          <Cards
-            title="albums"
-            data={this.state.albums}
-            selected={this.state.selectedCategorie}
-          />
+          {(selectedCategorie === 'albums' || selectedCategorie === 'top results') ? (
+            <Cards
+              title="albums"
+              data={albums}
+              selected={selectedCategorie}
+            />
+          ) : ''}
 
-          <Cards
-            title="playlists"
-            data={this.state.playlists}
-            selected={this.state.selectedCategorie}
-          />
+          {(selectedCategorie === 'playlists' || selectedCategorie === 'top results') ? (
+            <Cards
+              title="playlists"
+              data={playlists}
+              selected={selectedCategorie}
+            />
+          ) : ''}
 
-          <Cards
-            title="podcasts"
-            data={this.state.podcasts}
-            selected={this.state.selectedCategorie}
-          />
+          {(selectedCategorie === 'podcasts' || selectedCategorie === 'top results') ? (
+            <Cards
+              title="podcasts"
+              data={podcasts}
+              selected={selectedCategorie}
+            />
+          ) : ''}
 
-          {
-            (this.state.selectedCategorie === 'songs')
-              ? <ListedItems items={this.state.songs} />
-              : ''
-          }
+          {(selectedCategorie === 'episodes' || selectedCategorie === 'top results') ? (
+            <Episodes
+              title="episodes"
+              episodes={topEpisodes}
+              selected={selectedCategorie}
+            />
+          ) : ''}
 
-          <Episodes
-            title="episodes"
-            episodes={topEpisodes}
-            selected={this.state.selectedCategorie}
-          />
+          {(selectedCategorie === 'songs') ? (
+            <ListedItems
+              items={songs}
+            />
+          ) : ''}
         </div>
       </div>
     );
