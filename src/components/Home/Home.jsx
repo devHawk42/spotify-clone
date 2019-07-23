@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Categories, Cards, Genres } from '../index';
+import { Categories, Cards, Genres, RecentlyPlayed } from '../index';
 import { endpoints, makeRequest } from '../../utils/requests';
 import './Home.css';
 
@@ -19,14 +19,21 @@ class Home extends Component {
     const userProfile = await makeRequest(endpoints.userProfile);
     const newReleases = await makeRequest(endpoints.newReleases(userProfile.country));
     const recentlyPlayed = await makeRequest(endpoints.recentlyPlayed);
+    this.getRecentlyPlayedArtists(recentlyPlayed.items);
     const categories = await makeRequest(endpoints.categories);
 
     this.setState({
       userProfile,
       newReleases: newReleases.albums,
-      recentlyPlayed,
       categories: categories.categories,
     });
+  }
+
+  getRecentlyPlayedArtists(recentlyPlayed) {
+    const artistsFiltered = Array.from(new Set(recentlyPlayed.map(a => a.track.artists[0].id)))
+      .map(id => recentlyPlayed.find(a => a.track.artists[0].id === id));
+
+    this.setState({ recentlyPlayed: artistsFiltered.map(artist => artist.track) });
   }
 
   handleClick(section) {
@@ -35,8 +42,13 @@ class Home extends Component {
 
   render() {
     const tabCategories = ['featured', 'podcasts', 'charts', 'genres & moods', 'new releases', 'discover'];
-    const { selectedCategorie, newReleases, categories } = this.state;
-console.log(this.state)
+    const {
+      selectedCategorie,
+      newReleases,
+      categories,
+      recentlyPlayed,
+    } = this.state;
+    console.log(recentlyPlayed);
     return (
       <div className="main-view">
         <Categories
@@ -45,6 +57,15 @@ console.log(this.state)
           selected={selectedCategorie}
         />
 
+        {(selectedCategorie === 'featured') ? (
+          <RecentlyPlayed
+            title="Recently played"
+            data={recentlyPlayed}
+            selected={selectedCategorie}
+            type="recentlyPayed"
+          />
+        ) : ''}
+
         {(selectedCategorie === 'genres & moods') ? (
           <Genres
             title="genres & moods"
@@ -52,7 +73,6 @@ console.log(this.state)
             selected={selectedCategorie}
           />
         ) : ''}
-
 
         {(selectedCategorie === 'new releases') ? (
           <Cards

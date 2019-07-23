@@ -10,6 +10,7 @@ import TopResults from './Search/TopResults.jsx';
 import ListedItems from './ListedItems/ListedItems.jsx';
 import Episodes from './Search/Episodes.jsx';
 import Genres from './Home/Genres.jsx';
+import RecentlyPlayed from './Home/RecentlyPlayed.jsx';
 
 export {
   Footer,
@@ -24,4 +25,5 @@ export {
   ListedItems,
   Episodes,
   Genres,
+  RecentlyPlayed,
 };

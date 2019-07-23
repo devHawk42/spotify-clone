@@ -11,7 +11,9 @@ class Cards extends Component {
 
 
   render() {
-    const { title, data, selected } = this.props;
+    const {
+      title, data, selected, type,
+    } = this.props;
 
     function artistInfo(artists) {
       const artistCollab = [];
@@ -20,6 +22,14 @@ class Cards extends Component {
         artistCollab.push(artists[i].name);
       }
       return artistCollab.join(', ');
+    }
+
+    function imageURL(artist) {
+      const imgDefault = 'https://i.scdn.co/image/2162dbfb7151c96801bf586475cb203c40a21910)';
+      if (type === 'recentlyPlayed') {
+        return (artist.album.images && artist.album.images[0]) ? artist.album.images[0].url : imgDefault;
+      }
+      return (artist.images && artist.images[0]) ? artist.images[0].url : imgDefault;
     }
 
     return (
@@ -33,8 +43,8 @@ class Cards extends Component {
               key={artist.id}
               id={artist.id}
               name={artist.name}
-              artistInfo={artistInfo(artist.artists)}
-              url={(artist.images && artist.images[0]) ? artist.images[0].url : 'https://i.scdn.co/image/2162dbfb7151c96801bf586475cb203c40a21910)'}
+              artistInfo={(artist.artists) ? artistInfo(artist.artists) : ''}
+              url={imageURL(artist)}
               type={artist.type}
             />
           ))}
@@ -48,6 +58,7 @@ Cards.defaultProps = {
   title: '',
   data: [],
   selected: '',
+  type: '',
 };
 
 Cards.propTypes = {
@@ -65,6 +76,7 @@ Cards.propTypes = {
     }),
   ),
   selected: PropTypes.string,
+  type: PropTypes.string,
 };
 
 
