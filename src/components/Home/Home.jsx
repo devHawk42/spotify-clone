@@ -58,11 +58,11 @@ class Home extends Component {
         />
 
         {(selectedCategorie === 'featured') ? (
-          <RecentlyPlayed
+          <Cards
             title="Recently played"
             data={recentlyPlayed}
             selected={selectedCategorie}
-            type="recentlyPayed"
+            type="recentlyPlayed"
           />
         ) : ''}
 
