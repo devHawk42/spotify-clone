@@ -19,7 +19,7 @@ class Search extends Component {
       podcasts: [],
       selectedCategorie: '',
     };
-
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 

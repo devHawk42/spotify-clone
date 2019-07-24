@@ -12,7 +12,7 @@ class Home extends Component {
       newReleases: [],
       recentlyPlayed: [],
       categories: {},
-      selectedCategorie: '',
+      selectedCategorie: 'featured',
     };
   }
 
