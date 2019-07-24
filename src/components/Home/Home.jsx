@@ -7,6 +7,7 @@ class Home extends Component {
   constructor() {
     super();
     this.state = {
+      related: {},
       userProfile: {},
       newReleases: [],
       recentlyPlayed: [],
@@ -34,6 +35,19 @@ class Home extends Component {
       .map(id => recentlyPlayed.find(a => a.track.artists[0].id === id));
 
     this.setState({ recentlyPlayed: artistsFiltered.map(artist => artist.track) });
+    this.getRelatedArtists();
+  }
+
+  async getRelatedArtists() {
+    const { recentlyPlayed } = this.state;
+    const artistSeed = recentlyPlayed[0].artists[0];
+    const related = {
+      seedId: artistSeed.id,
+      seedName: artistSeed.name,
+    };
+    const rsp = await makeRequest(endpoints.relatedArtists(related.seedId));
+    related.artists = rsp.artists;
+    this.setState({ related });
   }
 
   handleClick(section) {
@@ -47,6 +61,7 @@ class Home extends Component {
       newReleases,
       categories,
       recentlyPlayed,
+      related,
     } = this.state;
 
     return (
@@ -63,6 +78,14 @@ class Home extends Component {
             data={recentlyPlayed}
             selected={selectedCategorie}
             type="recentlyPlayed"
+          />
+        ) : ''}
+
+        {(selectedCategorie === 'featured') ? (
+          <Cards
+            title={`Related to ${related.seedName}`}
+            data={related.artists}
+            selected={selectedCategorie}
           />
         ) : ''}
 
