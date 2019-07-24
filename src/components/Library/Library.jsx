@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Categories, Cards } from '../index';
+import { Categories, Cards, ListedItems } from '../index';
 import { makeRequest, endpoints } from '../../utils/requests';
 import './Library.css';
 
@@ -7,8 +7,11 @@ class Library extends Component {
   constructor() {
     super();
     this.state = {
+      tracks: [],
+      albums: [],
+      artists: [],
       playlists: [],
-      selectedCategorie: 'featured',
+      selectedCategorie: 'playlists',
     };
   }
 
@@ -19,13 +22,50 @@ class Library extends Component {
     this.setState({ playlists: playlists.items });
   }
 
-  handleClick(section) {
+  async getSongs() {
+    let tracks = await makeRequest(endpoints.savedTracks);
+    tracks = tracks.items;
+    tracks = tracks.map(item => item.track);
+
+    this.setState({ tracks });
+  }
+
+  async getAlbums() {
+    let albums = await makeRequest(endpoints.savedAlbums);
+    albums = albums.items;
+    albums = albums.map(item => item.album);
+
+    this.setState({ albums });
+  }
+
+  async getArtists() {
+    let artists = await makeRequest(endpoints.savedArtists);
+    artists = artists.artists.items;
+
+    this.setState({ artists });
+  }
+
+  async handleClick(section) {
     this.setState({ selectedCategorie: section });
+    switch (section) {
+      // tabCategories
+      case 'liked songs':
+        this.getSongs();
+        break;
+      case 'albums':
+        this.getAlbums();
+        break;
+      default:
+        this.getArtists();
+        break;
+    }
   }
 
   render() {
     const tabCategories = ['playlists', 'liked songs', 'albums', 'artists'];
-    const { selectedCategorie, playlists } = this.state;
+    const {
+      selectedCategorie, playlists, tracks, albums, artists,
+    } = this.state;
 
     return (
       <div className="main-view">
@@ -39,6 +79,28 @@ class Library extends Component {
           <Cards
             title=""
             data={playlists}
+            selected={selectedCategorie}
+          />
+        ) : ''}
+
+        {(selectedCategorie === 'liked songs') ? (
+          <ListedItems
+            items={tracks}
+          />
+        ) : ''}
+
+        {(selectedCategorie === 'albums') ? (
+          <Cards
+            title=""
+            data={albums}
+            selected={selectedCategorie}
+          />
+        ) : ''}
+
+        {(selectedCategorie === 'artists') ? (
+          <Cards
+            title=""
+            data={artists}
             selected={selectedCategorie}
           />
         ) : ''}

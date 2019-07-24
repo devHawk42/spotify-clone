@@ -10,6 +10,9 @@ const endpoints = {
   newReleases: country => `/browse/new-releases?country=${country}&limit=10`,
   relatedArtists: seedId => `/artists/${seedId}/related-artists`,
   playlists: userId => `/users/${userId}/playlists`,
+  savedTracks: '/me/tracks',
+  savedAlbums: '/me/albums',
+  savedArtists: '/me/following?type=artist&limit=20',
 };
 
 async function makeRequest(endpoint) {
