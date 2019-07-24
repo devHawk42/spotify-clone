@@ -1,7 +1,7 @@
 import React from 'react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import {
-  Footer, Home, Navbar, DevProfile, Search,
+  Footer, Home, Navbar, DevProfile, Search, Library,
 } from './components/index';
 import { setToken } from './utils/session';
 import './App.css';
@@ -16,6 +16,7 @@ function App() {
         <Switch>
           <Route path="/search" component={Search} />
           <Route path="/devprofile" component={DevProfile} />
+          <Route path="/library" component={Library} />
           <Route path="/" component={Home} />
         </Switch>
 

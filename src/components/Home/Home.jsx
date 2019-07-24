@@ -8,7 +8,6 @@ class Home extends Component {
     super();
     this.state = {
       related: {},
-      userProfile: {},
       newReleases: [],
       recentlyPlayed: [],
       categories: {},
@@ -23,8 +22,9 @@ class Home extends Component {
     this.getRecentlyPlayedArtists(recentlyPlayed.items);
     const categories = await makeRequest(endpoints.categories);
 
+    localStorage.setItem('userProfile', JSON.stringify(userProfile));
+
     this.setState({
-      userProfile,
       newReleases: newReleases.albums,
       categories: categories.categories,
     });

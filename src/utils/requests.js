@@ -9,9 +9,10 @@ const endpoints = {
   categories: '/browse/categories',
   newReleases: country => `/browse/new-releases?country=${country}&limit=10`,
   relatedArtists: seedId => `/artists/${seedId}/related-artists`,
+  playlists: userId => `/users/${userId}/playlists`,
 };
 
-function makeRequest(endpoint) {
+async function makeRequest(endpoint) {
   const request = new Request(`${url + endpoint}`,
     {
       headers: new Headers({
@@ -19,17 +20,16 @@ function makeRequest(endpoint) {
       }),
     });
 
-  return fetch(request)
-    .then(res => res.json())
-    .then((res) => {
-      if (res.error && res.error.status === 401) {
-        refreshToken();
-      }
-      return res;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  try {
+    const resFetch = await fetch(request);
+    const resJson = await resFetch.json();
+    if (resJson.error && resJson.error.status === 401) {
+      refreshToken();
+    }
+    return resJson;
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 export {

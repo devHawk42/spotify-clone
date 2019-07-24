@@ -31,12 +31,12 @@ const Navbar = () => (
       </li>
       <li className="navBar-group">
         <div className="navBar-item active-left-icon">
-          <a className="navBar-link">
+          <Link to="/library" className="navBar-link">
             <div className="navBar-icon-text-wrapper">
               <object id="svgObject" data="./public/home.svg" type="image/svg+xml">Your browser doesn't support SVG</object>
               <span className="navBar-link-text">Your library</span>
             </div>
-          </a>
+          </Link>
         </div>
       </li>
 
