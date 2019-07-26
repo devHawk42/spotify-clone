@@ -13,6 +13,9 @@ const endpoints = {
   savedTracks: '/me/tracks',
   savedAlbums: '/me/albums',
   savedArtists: '/me/following?type=artist&limit=20',
+  getArtist: id => `/artists/${id}`,
+  artistTopTracks: id => `/artists/${id}/top-tracks?country=AR`,
+  artistAlbums: id => `/artists/${id}/albums?country=AR`,
 };
 
 async function makeRequest(endpoint) {
