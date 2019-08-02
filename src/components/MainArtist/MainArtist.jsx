@@ -68,7 +68,9 @@ console.log(tracks)
           <div className="header-listeners">
             <p>600,000 monthly listeners</p>
           </div>
-          <h1 className="header-title">{artist.name}</h1>
+          <div className="header-title-container">
+            <h1 className="header-title">{artist.name}</h1>
+          </div>
           <div className="header-buttons">
             <button className="btn header-button-play" type="button">play</button>
             <button className="btn header-button-follow" type="button">follow</button>
@@ -82,28 +84,32 @@ console.log(tracks)
 
         </div>
 
-        {(selectedCategorie === 'overview') ? (
-          <ListedItems
-            items={topSongs}
-          />
-        ) : ''}
+        <div className="main-artist-container">
+          {(selectedCategorie === 'overview') ? (
+            <div>
+              <h1 className="overview-title">Popular</h1>
+              <ListedItems
+                items={topSongs}
+              />
+            </div>
+          ) : ''}
 
-        {(selectedCategorie === 'overview') ? (
-          <Cards
-            title="Albums"
-            data={artist.albums}
-            selected={selectedCategorie}
-          />
-        ) : ''}
+          {(selectedCategorie === 'overview') ? (
+            <Cards
+              title="Albums"
+              data={artist.albums}
+              selected={selectedCategorie}
+            />
+          ) : ''}
 
-        {(selectedCategorie === 'related artists') ? (
-          <Cards
-            title=""
-            data={relatedArtists}
-            selected={selectedCategorie}
-          />
-        ) : ''}
-
+          {(selectedCategorie === 'related artists') ? (
+            <Cards
+              title=""
+              data={relatedArtists}
+              selected={selectedCategorie}
+            />
+          ) : ''}
+        </div>
       </div>
     );
   }

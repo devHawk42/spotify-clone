@@ -1,17 +1,77 @@
 .main-artist {
-  background-color: black;
+  background-color: #181818;
   overflow: auto;
 }
 
 .main-artists-header {
   background: url('https://i.scdn.co/image/e89fcda9d538bb37f11d255c28c267fd86fa6163');
-  height: 50%;
+  height: 65%;
   background-size: cover;
   background-position: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+
+.main-artists-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: linear-gradient(transparent -30%,#181818);
+}
+
+.header-title-container {
+  max-width: 50%;
+}
+
+.header-listeners {
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: var(--glue-font-weight-normal);
+  color: #b3b3b3;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: #fff;
+  opacity: 0.8;
+  padding-top: 60px;
+  display: block;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.header-title {
+  font-size: 45px;
+  text-align: center;
+  margin: 0;
+  font-weight: var(--glue-font-weight-black);
+  color: #fff;
+  opacity: 0.8;
+}
+
+.main-artist-container {
+  margin: 0px 20px 0px 20px;
+}
+
+.overview-title {
+  font-size: 36px;
+  line-height: 44px;
+  letter-spacing: -.005em;
+  font-weight: var(--glue-font-weight-black);
+  color: #fff;
+  text-transform: none;
+  margin: 24px 0;
+}
+
+.header-buttons {
+  margin-bottom: 4em;
+  display: flex;
+  width: 40%;
+  justify-content: space-around;
 }
 
 .btn {

@@ -1,6 +1,6 @@
 .nav-bar {
     grid-area: nav-bar;
-    background-color: rgba(0,0,0,.9);
+    background-color: black;
     overflow-y: auto;
     width: 230px;
     /* will-change: transform; */
