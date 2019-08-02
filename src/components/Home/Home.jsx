@@ -11,7 +11,7 @@ class Home extends Component {
       newReleases: [],
       recentlyPlayed: [],
       categories: {},
-      selectedCategorie: 'featured',
+      selectedCategorie: '',
     };
   }
 
@@ -27,6 +27,7 @@ class Home extends Component {
     this.setState({
       newReleases: newReleases.albums,
       categories: categories.categories,
+      selectedCategorie: 'featured',
     });
   }
 
@@ -72,39 +73,40 @@ class Home extends Component {
           selected={selectedCategorie}
         />
 
-        {(selectedCategorie === 'featured') ? (
-          <Cards
-            title="Recently played"
-            data={recentlyPlayed}
-            selected={selectedCategorie}
-            type="recentlyPlayed"
-          />
-        ) : ''}
+        <div className="main-container">
+          {(selectedCategorie === 'featured') ? (
+            <Cards
+              title="Recently played"
+              data={recentlyPlayed}
+              selected={selectedCategorie}
+              type="recentlyPlayed"
+            />
+          ) : ''}
 
-        {(selectedCategorie === 'featured') ? (
-          <Cards
-            title={`Related to ${related.seedName}`}
-            data={related.artists}
-            selected={selectedCategorie}
-          />
-        ) : ''}
+          {(selectedCategorie === 'featured') ? (
+            <Cards
+              title={`Related to ${related.seedName}`}
+              data={related.artists}
+              selected={selectedCategorie}
+            />
+          ) : ''}
 
-        {(selectedCategorie === 'genres & moods') ? (
-          <Genres
-            title="genres & moods"
-            data={categories.items}
-            selected={selectedCategorie}
-          />
-        ) : ''}
+          {(selectedCategorie === 'genres & moods') ? (
+            <Genres
+              title="genres & moods"
+              data={categories.items}
+              selected={selectedCategorie}
+            />
+          ) : ''}
 
-        {(selectedCategorie === 'new releases') ? (
-          <Cards
-            title="New albums & singles"
-            data={newReleases.items}
-            selected={selectedCategorie}
-          />
-        ) : ''}
-
+          {(selectedCategorie === 'new releases') ? (
+            <Cards
+              title="New albums & singles"
+              data={newReleases.items}
+              selected={selectedCategorie}
+            />
+          ) : ''}
+        </div>
       </div>
     );
   }

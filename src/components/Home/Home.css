@@ -12,3 +12,7 @@
     min-height: 0;
     background: linear-gradient(to right bottom, rgb(49, 101, 104), rgb(0, 0, 0)), linear-gradient(transparent, rgb(0, 0, 0) 70%);
 }
+
+.main-container {
+    margin: 0px 20px 0px 20px;
+}

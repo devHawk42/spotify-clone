@@ -11,7 +11,7 @@ class Library extends Component {
       albums: [],
       artists: [],
       playlists: [],
-      selectedCategorie: 'playlists',
+      selectedCategorie: '',
     };
   }
 
@@ -19,7 +19,10 @@ class Library extends Component {
     const user = JSON.parse(localStorage.getItem('userProfile'));
     const playlists = await makeRequest(endpoints.playlists(user.id));
 
-    this.setState({ playlists: playlists.items });
+    this.setState({
+      playlists: playlists.items,
+      selectedCategorie: 'playlists',
+    });
   }
 
   async getSongs() {
@@ -75,35 +78,37 @@ class Library extends Component {
           selected={selectedCategorie}
         />
 
-        {(selectedCategorie === 'playlists') ? (
-          <Cards
-            title=""
-            data={playlists}
-            selected={selectedCategorie}
-          />
-        ) : ''}
+        <div className="main-container">
+          {(selectedCategorie === 'playlists') ? (
+            <Cards
+              title=""
+              data={playlists}
+              selected={selectedCategorie}
+            />
+          ) : ''}
 
-        {(selectedCategorie === 'liked songs') ? (
-          <ListedItems
-            items={tracks}
-          />
-        ) : ''}
+          {(selectedCategorie === 'liked songs') ? (
+            <ListedItems
+              items={tracks}
+            />
+          ) : ''}
 
-        {(selectedCategorie === 'albums') ? (
-          <Cards
-            title=""
-            data={albums}
-            selected={selectedCategorie}
-          />
-        ) : ''}
+          {(selectedCategorie === 'albums') ? (
+            <Cards
+              title=""
+              data={albums}
+              selected={selectedCategorie}
+            />
+          ) : ''}
 
-        {(selectedCategorie === 'artists') ? (
-          <Cards
-            title=""
-            data={artists}
-            selected={selectedCategorie}
-          />
-        ) : ''}
+          {(selectedCategorie === 'artists') ? (
+            <Cards
+              title=""
+              data={artists}
+              selected={selectedCategorie}
+            />
+          ) : ''}
+        </div>
       </div>
     );
   }

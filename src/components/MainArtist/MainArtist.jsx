@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Categories, Cards, Genres, ListedItems } from '../index';
+import { Categories, Cards, ListedItems } from '../index';
 import './MainArtist.css';
 import { makeRequest, endpoints } from '../../utils/requests';
 
@@ -15,7 +15,7 @@ class MainArtist extends Component {
         songs: [],
       },
       relatedArtists: [],
-      selectedCategorie: '',
+      selectedCategorie: 'overview',
     };
   }
 
@@ -24,7 +24,6 @@ class MainArtist extends Component {
     const { name, images, id } = await makeRequest(endpoints.getArtist(artistID));
     const { items } = await makeRequest(endpoints.artistAlbums(artistID));
     const { tracks } = await makeRequest(endpoints.artistTopTracks(artistID));
-console.log(tracks)
     this.setState({
       artist: {
         name,
@@ -60,7 +59,6 @@ console.log(tracks)
     const { selectedCategorie, artist, relatedArtists } = this.state;
 
     const topSongs = artist.songs.slice(0, 5);
-    console.log(relatedArtists)
 
     return (
       <div className="main-artist">
