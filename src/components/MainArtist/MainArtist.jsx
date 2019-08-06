@@ -19,8 +19,20 @@ class MainArtist extends Component {
     };
   }
 
-  async componentDidMount() {
-    const artistID = this.props.match.params.id;
+  componentDidMount() {
+    this.getArtistData();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.match.params.id !== this.props.match.params.id) {
+      const newId = nextProps.match.params.id;
+      return this.getArtistData(newId);
+    }
+    return '';
+  }
+
+  async getArtistData(newId) {
+    const artistID = (newId) ? newId : this.props.match.params.id;
     const { name, images, id } = await makeRequest(endpoints.getArtist(artistID));
     const { items } = await makeRequest(endpoints.artistAlbums(artistID));
     const { tracks } = await makeRequest(endpoints.artistTopTracks(artistID));
@@ -36,6 +48,8 @@ class MainArtist extends Component {
         songs: tracks,
       },
     });
+
+    this.getRelatedArtists();
   }
 
   async getRelatedArtists() {
