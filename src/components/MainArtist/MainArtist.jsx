@@ -24,11 +24,14 @@ class MainArtist extends Component {
     const { name, images, id } = await makeRequest(endpoints.getArtist(artistID));
     const { items } = await makeRequest(endpoints.artistAlbums(artistID));
     const { tracks } = await makeRequest(endpoints.artistTopTracks(artistID));
+    const mainPic = images[0].url;
+
     this.setState({
       artist: {
         name,
         id,
         images,
+        mainPic,
         albums: items,
         songs: tracks,
       },
@@ -56,13 +59,15 @@ class MainArtist extends Component {
 
   render() {
     const tabCategories = ['overview', 'related artists', 'about'];
-    const { selectedCategorie, artist, relatedArtists } = this.state;
+    const {
+      selectedCategorie, artist, relatedArtists,
+    } = this.state;
 
     const topSongs = artist.songs.slice(0, 5);
 
     return (
       <div className="main-artist">
-        <div className="main-artists-header">
+        <div className="main-artists-header" style={{ backgroundImage: `url(${artist.mainPic})` }}>
           <div className="header-listeners">
             <p>600,000 monthly listeners</p>
           </div>

@@ -4,11 +4,11 @@
 }
 
 .main-artists-header {
-  background: url('https://i.scdn.co/image/e89fcda9d538bb37f11d255c28c267fd86fa6163');
-  height: 65%;
+  height: 70%;
   background-size: cover;
-  background-position: center;
+  background-position: top;
   display: flex;
+  background-repeat: no-repeat;
   flex-direction: column;
   justify-content: center;
   align-items: center;
