@@ -64,7 +64,7 @@ class Home extends Component {
       recentlyPlayed,
       related,
     } = this.state;
-
+console.log(recentlyPlayed)
     return (
       <div className="main-view">
         <Categories

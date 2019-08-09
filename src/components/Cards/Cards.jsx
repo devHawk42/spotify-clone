@@ -14,14 +14,19 @@ class Cards extends Component {
     const {
       title, data, selected, type,
     } = this.props;
-    console.log(data)
+
     function artistInfo(artists) {
       const artistCollab = [];
       // eslint-disable-next-line no-plusplus
       for (let i = 0; i < artists.length; i++) {
-        artistCollab.push(artists[i].name);
+        const artistName = artists[i].name;
+        const artistId = artists[i].id;
+        artistCollab.push({
+          name: artistName,
+          id: artistId,
+        });
       }
-      return artistCollab.join(', ');
+      return artistCollab;
     }
 
     function imageURL(artist) {
@@ -41,9 +46,10 @@ class Cards extends Component {
           {data.map(artist => (
             <SingleArtist
               key={artist.id}
-              id={artist.id}
+              albumId={(artist.album) ? artist.album.id : artist.id}
+              artistId={(artist.artist) ? artist.artists[0].id : ''}
               name={artist.name}
-              artistInfo={(artist.artists) ? artistInfo(artist.artists) : ''}
+              artistInfo={(artist.artists) ? artistInfo(artist.artists) : []}
               url={imageURL(artist)}
               type={artist.type}
             />
