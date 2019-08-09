@@ -1,0 +1,15 @@
+.main-album {
+  background-color: #181818;
+  overflow: auto;
+  display: flex;
+  padding: 0px 20px 0px 20px;
+  padding-top: 40px;
+}
+
+.main-album-data {
+  width: 33%;
+}
+
+.main-album-songs {
+  width: 100%;
+}

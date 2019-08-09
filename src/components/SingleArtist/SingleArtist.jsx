@@ -7,7 +7,7 @@ const SingleArtist = ({
   id, type, url, name, artistInfo,
 }) => (
   <div key={id} className="single-artist">
-    <Link to={`/artist/${id}`}>
+    <Link to={`/album/${id}`}>
       <div
         className={(type === 'artist') ? 'artist-image border-radius' : 'artist-image'}
         style={(url) ? { backgroundImage: `url(${url})` } : { backgroundImage: 'url(https://i.scdn.co/image/2162dbfb7151c96801bf586475cb203c40a21910)' }}

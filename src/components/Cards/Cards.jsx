@@ -14,7 +14,7 @@ class Cards extends Component {
     const {
       title, data, selected, type,
     } = this.props;
-
+    console.log(data)
     function artistInfo(artists) {
       const artistCollab = [];
       // eslint-disable-next-line no-plusplus

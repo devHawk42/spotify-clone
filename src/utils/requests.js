@@ -16,6 +16,8 @@ const endpoints = {
   getArtist: id => `/artists/${id}`,
   artistTopTracks: id => `/artists/${id}/top-tracks?country=AR`,
   artistAlbums: id => `/artists/${id}/albums?country=AR`,
+  albumTracks: id => `/albums/${id}/tracks`,
+  getAlbum: id => `/albums/${id}`,
 };
 
 async function makeRequest(endpoint) {

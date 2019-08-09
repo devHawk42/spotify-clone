@@ -12,6 +12,7 @@ import Episodes from './Search/Episodes.jsx';
 import Genres from './Home/Genres.jsx';
 import Library from './Library/Library.jsx';
 import MainArtist from './MainArtist/MainArtist.jsx';
+import MainAlbum from './MainAlbum/MainAlbum.jsx';
 
 export {
   Footer,
@@ -28,4 +29,5 @@ export {
   Genres,
   Library,
   MainArtist,
+  MainAlbum,
 };

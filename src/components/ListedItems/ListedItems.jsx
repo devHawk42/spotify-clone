@@ -27,9 +27,9 @@ const ListedItems = ({ items }) => (
                       <span>{item.artists[0].name}</span>
                     </Link>
                     <span className="track-info-separator">•</span>
-                    <Link to={`/album/${item.album.name}`} className="track-album">
+                    {/* <Link to={`/album/${item.album.name}`} className="track-album">
                       <span>{item.album.name}</span>
-                    </Link>
+                    </Link> */}
                   </div>
                 )
                 : (
