@@ -47,7 +47,7 @@ class Cards extends Component {
             <SingleArtist
               key={artist.id}
               albumId={(artist.album) ? artist.album.id : artist.id}
-              artistId={(artist.artist) ? artist.artists[0].id : ''}
+              artistId={(artist.artist) ? artist.artists[0].id : artist.id}
               name={artist.name}
               artistInfo={(artist.artists) ? artistInfo(artist.artists) : []}
               url={imageURL(artist)}
