@@ -2,11 +2,11 @@
 
 A Spotify client built with Typescript and ReactJS that consumes the Spotify API.
 
-![alt text](https://github.com/devHawk42/spotify-clone/tree/master/presentationPics/home-featured.png "featured")
+![featured](https://github.com/devHawk42/spotify-clone/blob/master/presentationPics/home-featured.png "featured")
 
-![alt text](https://github.com/devHawk42/spotify-clone/tree/master/presentationPics/home-new_realeses.png "new_releases")
+![new_releases](https://github.com/devHawk42/spotify-clone/blob/master/presentationPics/home-new_releases.png "new_releases")
 
-![alt text](https://github.com/devHawk42/spotify-clone/tree/master/presentationPics/home.png "home")
+![home](https://github.com/devHawk42/spotify-clone/blob/master/presentationPics/home.png "home")
 
 Steps to run locally:
 ```
