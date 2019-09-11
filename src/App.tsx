@@ -4,10 +4,17 @@ import {
   Footer, Home, Navbar, DevProfile, Search, Library, MainArtist, MainAlbum
 } from './components/index';
 import { setToken } from './utils/session';
+import { endpoints, makeRequest } from './utils/requests';
 import './App.css';
 
 function App() {
+  async function getUserProfile(){
+    const userProfile = await makeRequest(endpoints.userProfile);
+    localStorage.setItem('userProfile', JSON.stringify(userProfile));
+  };
+
   setToken();
+  getUserProfile();
 
   return (
     <Router>

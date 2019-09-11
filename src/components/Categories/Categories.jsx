@@ -9,14 +9,14 @@ const Categories = ({ selected, categories, onClick }) => (
         categories.map((categorie, index) => (
           // eslint-disable-next-line react/no-array-index-key
           <li className="search-categories-items" key={index}>
-            <div onClick={() => onClick(categorie)} onKeyPress={onClick} role="presentation">
-              <span
-                href=""
-                className={(selected === categorie) ? 'search-single-item search-item-active' : 'search-single-item'}
-              >
-                {categorie}
-              </span>
-            </div>
+              <div onClick={() => onClick(categorie)} onKeyPress={onClick} role="presentation">
+                <span
+                  href=""
+                  className={(selected === categorie) ? 'search-single-item search-item-active' : 'search-single-item'}
+                  >
+                  {categorie}
+                </span>
+              </div>
           </li>
         ))
       }
